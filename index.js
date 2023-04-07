@@ -11,6 +11,7 @@ i++;
 function onclick(){
     var key = this.innerHTML;
     makeSound(key);
+    animation(key);
 }
 
 // fuction to be called for making sound
@@ -63,6 +64,18 @@ function makeSound(pressedButton)
 document.addEventListener("keydown", function(event){
     var keyBoardButton = event.key;
     makeSound(keyBoardButton);
+    animation(keyBoardButton);
 });
+
+
+
+// adding animations
+
+function animation(currentkey){
+     document.querySelector("."+ currentkey).classList.add("pressed");
+    setTimeout(function(){
+        document.querySelector("."+ currentkey).classList.remove("pressed")
+    },100)
+}
 
 
