@@ -1,3 +1,5 @@
+// applying event listener to all the buttons
+
 var i = 0;
 var n = document.querySelectorAll(".set .drum").length;
 while(i<n){
@@ -5,9 +7,17 @@ document.querySelectorAll(".set .drum")[i].addEventListener("click", onclick);
 i++;
 }
 
-function onclick()
+//  function to be called when event is triggered
+function onclick(){
+    var key = this.innerHTML;
+    makeSound(key);
+}
+
+// fuction to be called for making sound
+
+function makeSound(pressedButton)
 {
-    var pressedButton = this.innerHTML;
+    
    switch(pressedButton){
     case "w":
         var tom1 = new Audio('/sounds/tom-1.mp3')
@@ -48,7 +58,11 @@ function onclick()
    }
 }
 
+// adding eventListener for keyboard keys presses
 
-
+document.addEventListener("keydown", function(event){
+    var keyBoardButton = event.key;
+    makeSound(keyBoardButton);
+});
 
 
